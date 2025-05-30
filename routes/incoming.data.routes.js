@@ -35,7 +35,7 @@ router.post('/incoming_data', async (req, res) => {
             try {
                 await axios(config);
             } catch (err) {
-                console.error(`Error sending to destination: ${dest.url}`, error.message);
+                console.error(`Error sending to destination: ${dest.url}`, err.message);
             }
         }
 

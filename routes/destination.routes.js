@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
         if (destination) return res.json(destination);
         else return res.status(404).json({ message: 'Destination not found' });
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        res.status(400).json({ error: error.message });
     }
     
 });
