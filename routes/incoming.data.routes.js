@@ -17,7 +17,7 @@ router.post('/incoming_data', async (req, res) => {
 
         const destinations = await Destination.find({ account_id: account.account_id }).lean();
         if (destinations && destinations.length === 0) {
-            res.json({ message: 'Destination not found for the Account' });
+            return res.json({ message: 'Destination not found for the Account' });
         }
         for (let dest of destinations) {
             const config = {
@@ -35,14 +35,14 @@ router.post('/incoming_data', async (req, res) => {
             try {
                 await axios(config);
             } catch (err) {
-                console.error(`Error sending to destination: ${dest.url}`, err.message);
+                console.error(`Error sending to destination: ${dest.url}`, error.message);
             }
         }
 
-        res.json({ message: 'Data forwarded to destinations' });
+        return res.json({ message: 'Data forwarded to destinations' });
 
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        res.status(400).json({ error: error.message });
     }
 });
 

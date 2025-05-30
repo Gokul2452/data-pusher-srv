@@ -14,18 +14,18 @@ router.post('/', async (req, res) => {
         const account = new Account();
         Object.assign(account, body)
         await account.save();
-        res.json(account);
+        return res.json(account);
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message });
     }
 });
 
 router.get('/utils/list', async (req, res) => {
     try {
         const account = await Account.find();
-        res.json(account);
+        return res.json(account);
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message });
     }
 });
 
@@ -35,10 +35,10 @@ router.get('/:id', async (req, res) => {
             throw new Error(`id is required!`);
         }
         const account = await Account.findOne({ _id: req.params.id }).lean();
-        if (account) res.json(account);
-        else res.status(404).json({ message: 'Account not found' });
+        if (account) return res.json(account);
+        else return res.status(404).json({ message: 'Account not found' });
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: error.message });
     }
 });
 
@@ -50,11 +50,15 @@ router.put('/:id', async (req, res) => {
         }
         const account = await Account.findOne({ _id: req.params.id });
         if (!account) {
-            res.status(404).json({ message: 'Account not found' });
+            return res.status(404).json({ message: 'Account not found' });
         }
         let is_value_changed = false;
 
         if (incoming_request?.email && incoming_request?.email !== account.email) {
+            const is_email_id_exist = await Account.exists({ email: incoming_request.email});
+            if(is_email_id_exist){
+                res.status(404).json({ message: `Given email ${incoming_request.email} is already taken` });
+            }
             account.email = incoming_request.email;
             is_value_changed = true;
         }
@@ -71,10 +75,10 @@ router.put('/:id', async (req, res) => {
             await account.save();
         }
 
-        res.json(account)
+        return res.json(account)
 
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message });
     }
 });
 
@@ -88,10 +92,10 @@ router.delete('/:id', async (req, res) => {
             // deleting the acc and destination which have respective account_id
             await account.deleteOne();
             await Destination.deleteMany({ account_id: account.account_id })
-            res.json({ message: 'Account deleted succesfully' });
+            return res.json({ message: 'Account deleted succesfully' });
         } else res.status(404).json({ message: 'Account not found' });
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: error.message });
     }
 });
 

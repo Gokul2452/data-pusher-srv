@@ -10,12 +10,12 @@ router.post('/', async (req, res) => {
         const body = createDestinationDto(req.body);
         const is_account_id_exist = await Account.findOne({ account_id: body.account_id}).lean();
         if(!is_account_id_exist){
-            res.status(404).json({ message: `Given account_id ${body.account_id} is not a valid one` });
+            return res.status(404).json({ message: `Given account_id ${body.account_id} is not a valid one` });
         }
         const destination = new Destination();
         Object.assign(destination, body);
         await destination.save();
-        res.json(destination);
+        return res.json(destination);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
@@ -24,9 +24,9 @@ router.post('/', async (req, res) => {
 router.get('/utils/list', async (req, res) => {
     try {
         const account = await Destination.find();
-        res.json(account);
+        return res.json(account);
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message });
     }
 });
 
@@ -36,8 +36,8 @@ router.get('/:id', async (req, res) => {
             throw new Error(`id is required!`);
         }
         const destination = await Destination.findOne({ _id: req.params.id});
-        if (destination) res.json(destination);
-        else res.status(404).json({ message: 'Destination not found' });
+        if (destination) return res.json(destination);
+        else return res.status(404).json({ message: 'Destination not found' });
     } catch (error) {
         res.status(400).json({ error: err.message });
     }
@@ -50,9 +50,9 @@ router.get('/account/:account_id', async (req, res) => {
             throw new Error(`id is required!`);
         }
         const destinations = await Destination.find({ account_id: req.params.account_id }).lean();
-        res.json(destinations);
+        return res.json(destinations);
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: error.message });
     }
 });
 
@@ -64,7 +64,7 @@ router.put('/:id', async (req, res) => {
         }
         const destination = await Destination.findOne({ _id: req.params.id });
         if (!destination) {
-            res.status(404).json({ message: 'Destination not found' });
+            return res.status(404).json({ message: 'Destination not found' });
         }
         let is_value_changed = false;
 
@@ -86,10 +86,10 @@ router.put('/:id', async (req, res) => {
             await destination.save();
         }
 
-        res.json(destination)
+        return res.json(destination)
 
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message });
     }
 });
 
@@ -101,10 +101,10 @@ router.delete('/:id', async (req, res) => {
         const destination = await Destination.findOne({ _id: req.params.id });
         if (destination) {
             await destination.deleteOne();
-            res.json({ message: 'Destination deleted succesfully' });
-        } else res.status(404).json({ message: 'Destination not found' });
+            return res.json({ message: 'Destination deleted succesfully' });
+        } else return res.status(404).json({ message: 'Destination not found' });
     } catch (error) {
-        res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: error.message });
     }
 });
 
