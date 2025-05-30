@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "c802d7e2-fe39-4569-ad10-cf3e3569e835",
+		"name": "customers lab assesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25150421"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Create Accounts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU_2452\",\r\n    \"website\":\"www.shop.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all accounts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/utils/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"utils",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/6839953008d51df1b0f49111",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"6839953008d51df1b0f49111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update account with ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test@gmail.com\",\r\n    \"account_name\":\"test1234\",\r\n    \"website\":\"www.flipkart.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/6839953008d51df1b0f4911d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"6839953008d51df1b0f4911d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account with ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/2583f0bf-1119-4816-bca1-6cd40f6d3136",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"2583f0bf-1119-4816-bca1-6cd40f6d3136"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Destination",
+			"item": [
+				{
+					"name": "Create Destination",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_id\": \"86b55ef8-a416-4681-b897-436a79659d53\",\r\n    \"url\": \"http://postman.api\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/destinations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all destinations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/destinations/utils/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"utils",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get destination by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/destinations/68397264a5cf8fe2fbd13646",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"68397264a5cf8fe2fbd13646"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete destination by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/destinations/68398becb6517978780d9348",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"68398becb6517978780d9348"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update destination by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n  \"url\": \"http://postman.api\",\r\n  \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"1123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/destinations/68399681aad8f140a2bed566",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"68399681aad8f140a2bed566"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incoming Data",
+			"item": [
+				{
+					"name": "Get incoming data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CL-X-TOKEN",
+								"value": "7b4ed00f-aafc-4c61-8627-12463fb56efe",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event\": \"user.signup\",\r\n    \"user\": {\r\n        \"id\": \"u001\",\r\n        \"email\": \"newuser@example.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/server/incoming_data",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"server",
+								"incoming_data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
