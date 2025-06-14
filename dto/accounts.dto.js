@@ -8,6 +8,7 @@ function createAccountDto(data) {
       email: data.email,
       account_name: data.account_name,
       website: data.website,
+      account_id: data.account_id
     };
   }
   
