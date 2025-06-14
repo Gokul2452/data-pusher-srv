@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start": "node app.js"
   },
   "keywords": [],
@@ -13,8 +14,19 @@
   "dependencies": {
     "axios": "^1.9.0",
     "body-parser": "^2.2.0",
+    "bull": "^4.16.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "ioredis": "^5.6.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
+    "redis": "^5.5.6",
     "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "supertest": "^7.1.1"
   }
 }

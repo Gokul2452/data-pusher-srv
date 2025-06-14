@@ -3,12 +3,13 @@ const axios = require('axios');
 const router = express.Router();
 const Account = require('../models/Account');
 const Destination = require('../models/Destination');
-
-router.post('/incoming_data', async (req, res) => {
+const queue = require('../jobs/dataQuece');
+const accountRateLimiter = require('../workers/rateLimiter')
+router.post('/incoming_data', accountRateLimiter, async (req, res) => {
     try {
         const token = req.header('CL-X-TOKEN');
         const data = req.body;
-
+        const receivedAt = new Date();
         if (!token) return res.status(401).json({ message: 'Un Authenticate' });
         if (typeof data !== 'object') return res.status(400).json({ message: 'Invalid Data' });
 
@@ -20,23 +21,13 @@ router.post('/incoming_data', async (req, res) => {
             return res.json({ message: 'Destination not found for the Account' });
         }
         for (let dest of destinations) {
-            const config = {
-                method: dest.http_method,
-                url: dest.url,
-                headers: dest.headers
-            };
-
-            if (dest.http_method.toLowerCase() === 'get') {
-                config.params = data;
-            } else {
-                config.data = data;
-            }
-
-            try {
-                await axios(config);
-            } catch (err) {
-                console.error(`Error sending to destination: ${dest.url}`, err.message);
-            }
+            await queue.add({
+                account_id: account.account_id,
+                destination_id: dest._id,
+                dest,
+                payload: data,
+                receivedAt
+            });
         }
 
         return res.json({ message: 'Data forwarded to destinations' });
