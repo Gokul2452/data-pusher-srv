@@ -12,11 +12,21 @@
 				{
 					"name": "Create Accounts",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU_2452\",\r\n    \"website\":\"www.shop.com\"\r\n}",
+							"raw": "{\r\n    \"email\":\"flipkart@gmail1.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID007\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -33,25 +43,384 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "400 Required Field Missing",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"email\":\"flipkart@gmail111.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID0071\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"81-rDqi4uppuRBqkHnpUXN68pPhvSc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 04:21:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid Data\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"email is required\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "409 Email already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"flipkart@gmail111.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID0071\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-d4JQ78H3CVrjrkKpBsqNHHzmaXE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:36:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Email flipkart@gmail111.com is already exists !\"\n}"
+						},
+						{
+							"name": "409 Account ID already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"flipkart@gma11.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID0071\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-hon9I6EktgYC14sdKQkjAL7+6k8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:38:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Account ID ACCID0071 is already exists !\"\n}"
+						},
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"amazon@admin.com\",\r\n    \"account_name\":\"Amazon\",\r\n    \"website\":\"www.amazon.com\",\r\n    \"account_id\":\"AMAZONACCID7\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "414"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19e-epb199EggWHDU0Xs+aKMkJgaZ6Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:39:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"is_user_account\": false,\n    \"_id\": \"684d0b2cb64cb1275cfa05d3\",\n    \"app_secret_token\": \"8ba23e2a-9492-4ca7-9580-c137c31544df\",\n    \"email\": \"amazon@admin.com\",\n    \"account_name\": \"Amazon\",\n    \"website\": \"www.amazon.com\",\n    \"account_id\": \"AMAZONACCID7\",\n    \"updated_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n    \"created_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n    \"created_at\": \"2025-06-14T05:39:57.092Z\",\n    \"updated_at\": \"2025-06-14T05:39:57.092Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"amazon@admin.com\",\r\n    \"account_name\":\"Amazon\",\r\n    \"website\":\"www.amazon.com\",\r\n    \"account_id\":\"AMAZONACCID7\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:42:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						},
+						{
+							"name": "403 Permission Denied",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"amazon@admin.com\",\r\n    \"account_name\":\"Amazon\",\r\n    \"website\":\"www.amazon.com\",\r\n    \"account_id\":\"AMAZONACCID7\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-5lsg6ehTVs9l6Eoe+RIGYXU+05c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:51:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Permission denied.\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get all accounts",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{url}}/accounts/utils/list",
 							"host": [
@@ -64,7 +433,114 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounts/utils/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"utils",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1721"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b9-NSqlGCjRaTVmOolU9vOMONClPXk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:41:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"accounts\": [\n        {\n            \"_id\": \"684c6682179b15583feffa0d\",\n            \"is_user_account\": false,\n            \"app_secret_token\": \"2653c2a6-0eb5-4fec-9772-1fd7fdc16122\",\n            \"email\": \"flipkart@gmail111.com\",\n            \"account_name\": \"Flipkart\",\n            \"website\": \"www.flipkart.com\",\n            \"account_id\": \"ACCID0071\",\n            \"updated_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n            \"created_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n            \"created_at\": \"2025-06-13T17:57:22.076Z\",\n            \"updated_at\": \"2025-06-13T17:57:22.076Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"684c07f9601241300ecd4205\",\n            \"email\": \"gokulvenkat678@gmail.com\",\n            \"account_name\": \"gokulvenkat678@gmail.com\",\n            \"app_secret_token\": \"465b1b29-e8c3-4127-ba75-06c9bb4744a7\",\n            \"account_id\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n            \"is_user_account\": true,\n            \"created_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n            \"updated_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n            \"created_at\": \"2025-06-13T11:14:01.020Z\",\n            \"updated_at\": \"2025-06-13T11:14:01.020Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"684c0aa55c6170fe7265d07b\",\n            \"is_user_account\": false,\n            \"app_secret_token\": \"0e208bd0-9b5a-4bf2-906c-d95aa9a392f6\",\n            \"email\": \"flipkart@gmail11.com\",\n            \"account_name\": \"Flipkart\",\n            \"website\": \"www.flipkart.com\",\n            \"account_id\": \"ACCID007\",\n            \"updated_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n            \"created_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n            \"created_at\": \"2025-06-13T11:25:25.208Z\",\n            \"updated_at\": \"2025-06-13T11:28:05.718Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"684d0b2cb64cb1275cfa05d3\",\n            \"is_user_account\": false,\n            \"app_secret_token\": \"8ba23e2a-9492-4ca7-9580-c137c31544df\",\n            \"email\": \"amazon@admin.com\",\n            \"account_name\": \"Amazon\",\n            \"website\": \"www.amazon.com\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"updated_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n            \"created_by\": \"8de4e37e-3ada-4e52-84f5-85adbe88f196\",\n            \"created_at\": \"2025-06-14T05:39:57.092Z\",\n            \"updated_at\": \"2025-06-14T05:39:57.092Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounts/utils/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"utils",
+										"list"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:43:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get account by ID",
@@ -72,6 +548,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -84,26 +570,220 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/accounts/6839953008d51df1b0f49111",
+							"raw": "{{url}}/accounts/684c0aa55c6170fe7265d07b",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
-								"6839953008d51df1b0f49111"
+								"684c0aa55c6170fe7265d07b"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/684c0aa55c6170fe7265d07o",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"684c0aa55c6170fe7265d07o"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "418"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a2-oHGIEcFeEylIOpb9OtBY+ln43Ks\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:43:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"684c0aa55c6170fe7265d07b\",\n    \"is_user_account\": false,\n    \"app_secret_token\": \"0e208bd0-9b5a-4bf2-906c-d95aa9a392f6\",\n    \"email\": \"flipkart@gmail11.com\",\n    \"account_name\": \"Flipkart\",\n    \"website\": \"www.flipkart.com\",\n    \"account_id\": \"ACCID007\",\n    \"updated_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n    \"created_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n    \"created_at\": \"2025-06-13T11:25:25.208Z\",\n    \"updated_at\": \"2025-06-13T11:28:05.718Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "404 Account not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/684c0aa55c6170fe7265d071",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"684c0aa55c6170fe7265d071"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-JkY0DvpxbEny7Houx5m94RC0biQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:43:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Account not found\"\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/684c0aa55c6170fe7265d071",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"684c0aa55c6170fe7265d071"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:45:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Update account with ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"test@gmail.com\",\r\n    \"account_name\":\"test1234\",\r\n    \"website\":\"www.flipkart.com\"\r\n}",
+							"raw": "{\r\n    \"email\":\"flipkart@gmail11.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID007\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,26 +791,344 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/accounts/6839953008d51df1b0f4911d",
+							"raw": "{{url}}/accounts/684c0aa55c6170fe7265d07b",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
-								"6839953008d51df1b0f4911d"
+								"684c0aa55c6170fe7265d07b"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"flipkart@gmail11.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID007\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/684c0aa55c6170fe7265d07b",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"684c0aa55c6170fe7265d07b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "418"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a2-oHGIEcFeEylIOpb9OtBY+ln43Ks\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:44:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"684c0aa55c6170fe7265d07b\",\n    \"is_user_account\": false,\n    \"app_secret_token\": \"0e208bd0-9b5a-4bf2-906c-d95aa9a392f6\",\n    \"email\": \"flipkart@gmail11.com\",\n    \"account_name\": \"Flipkart\",\n    \"website\": \"www.flipkart.com\",\n    \"account_id\": \"ACCID007\",\n    \"updated_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n    \"created_by\": \"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\n    \"created_at\": \"2025-06-13T11:25:25.208Z\",\n    \"updated_at\": \"2025-06-13T11:28:05.718Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"flipkart@gmail11.com\",\r\n    \"account_name\":\"Flipkart\",\r\n    \"website\":\"www.flipkart.com\",\r\n    \"account_id\":\"ACCID007\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/684c0aa55c6170fe7265d07b",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"684c0aa55c6170fe7265d07b"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:46:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete account with ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/ACCID007",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"ACCID007"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounts/ACCID0071",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"ACCID0071"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-2fFKIX4L5TQ1EmGIVSEXYVaGCus\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:45:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Account deleted succesfully\"\n}"
+						},
+						{
+							"name": "403 Access Denied",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounts/ACCID0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"ACCID0"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-5lsg6ehTVs9l6Eoe+RIGYXU+05c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:46:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Permission denied.\"\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/accounts/ACCID0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"ACCID0"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:46:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Filter call",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"account_name\":\"GOKU2452\",\r\n    \"website\":\"website\"\r\n}",
+							"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10\r\n    // \"account_name\":\"amazon\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -138,17 +1136,83 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/accounts/2583f0bf-1119-4816-bca1-6cd40f6d3136",
+							"raw": "{{url}}/accounts/utils/list/filter",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
-								"2583f0bf-1119-4816-bca1-6cd40f6d3136"
+								"utils",
+								"list",
+								"filter"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accounts/utils/list/filter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accounts",
+										"utils",
+										"list",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1745"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d1-4BowY30/29IeCBB+fW9LlS8K5lU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:07:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"684d10054ca2862908e230c1\",\n            \"is_user_account\": false,\n            \"app_secret_token\": \"e3f1bcb1-f464-4a16-8013-7ea0757e1505\",\n            \"email\": \"amazon@admin.com\",\n            \"account_name\": \"Amazon\",\n            \"website\": \"www.amazon.com\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T06:00:37.069Z\",\n            \"updated_at\": \"2025-06-14T06:00:37.069Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"684d0f684ca2862908e230b2\",\n            \"email\": \"gokulvenkat678@gmail.com\",\n            \"account_name\": \"gokulvenkat678@gmail.com\",\n            \"app_secret_token\": \"3f6fdf93-706b-4c1a-8ac9-8f4a7c02efa7\",\n            \"account_id\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"is_user_account\": true,\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T05:58:00.016Z\",\n            \"updated_at\": \"2025-06-14T05:58:00.016Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total_count\": [\n        {\n            \"_id\": \"684d0f684ca2862908e230b2\",\n            \"email\": \"gokulvenkat678@gmail.com\",\n            \"account_name\": \"gokulvenkat678@gmail.com\",\n            \"app_secret_token\": \"3f6fdf93-706b-4c1a-8ac9-8f4a7c02efa7\",\n            \"account_id\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"is_user_account\": true,\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T05:58:00.016Z\",\n            \"updated_at\": \"2025-06-14T05:58:00.016Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"684d10054ca2862908e230c1\",\n            \"is_user_account\": false,\n            \"app_secret_token\": \"e3f1bcb1-f464-4a16-8013-7ea0757e1505\",\n            \"email\": \"amazon@admin.com\",\n            \"account_name\": \"Amazon\",\n            \"website\": \"www.amazon.com\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T06:00:37.069Z\",\n            \"updated_at\": \"2025-06-14T06:00:37.069Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		},
@@ -158,11 +1222,21 @@
 				{
 					"name": "Create Destination",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"account_id\": \"86b55ef8-a416-4681-b897-436a79659d53\",\r\n    \"url\": \"http://postman.api\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"account_id\": \"ACCID007\",\r\n    \"url\": \"http://postman.api\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -179,11 +1253,262 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_id\": \"AMAZONACCID7\",\r\n    \"url\": \"http://localhost:3000/ping\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-vkSlUQcJfy2fIx9ZFuCWasAlSKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:01:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"684d10474ca2862908e230c9\",\n    \"account_id\": \"AMAZONACCID7\",\n    \"url\": \"http://localhost:3000/ping\",\n    \"http_method\": \"GET\",\n    \"headers\": {\n        \"APP_ID\": \"1234QP\"\n    },\n    \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_at\": \"2025-06-14T06:01:43.294Z\",\n    \"updated_at\": \"2025-06-14T06:01:43.294Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "400 Required Fields missing",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"account_id\": \"AMAZONACCID7\",\r\n    \"url\": \"http://localhost:3000/ping\",\r\n    // \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-/Rjrgr371H+ZGQjAZJM+U201Xf4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:18:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid Data\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"http_method is required\",\n            \"path\": \"http_method\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"headers is required\",\n            \"path\": \"account_id\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"account_id\": \"AMAZONACCID7\",\r\n    \"url\": \"http://localhost:3000/ping\",\r\n     \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:47:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						},
+						{
+							"name": "403  Permission Denied",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"account_id\": \"AMAZONACCID7\",\r\n    \"url\": \"http://localhost:3000/ping\",\r\n     \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-5lsg6ehTVs9l6Eoe+RIGYXU+05c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:52:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Permission denied.\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get all destinations",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -198,52 +1523,503 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/utils/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"utils",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"175-XJCz9M0tCQ6B95YO0kTzGyrz4b8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:19:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"destinations\": [\n        {\n            \"_id\": \"684d10474ca2862908e230c9\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"url\": \"http://localhost:3000/ping\",\n            \"http_method\": \"GET\",\n            \"headers\": {\n                \"APP_ID\": \"1234QP\"\n            },\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T06:01:43.294Z\",\n            \"updated_at\": \"2025-06-14T06:01:43.294Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/utils/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"utils",
+										"list"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:47:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get destination by ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/destinations/68397264a5cf8fe2fbd13646",
+							"raw": "{{url}}/destinations/684d10474ca2862908e230c1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"destinations",
-								"68397264a5cf8fe2fbd13646"
+								"684d10474ca2862908e230c1"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-vkSlUQcJfy2fIx9ZFuCWasAlSKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:22:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"684d10474ca2862908e230c9\",\n    \"account_id\": \"AMAZONACCID7\",\n    \"url\": \"http://localhost:3000/ping\",\n    \"http_method\": \"GET\",\n    \"headers\": {\n        \"APP_ID\": \"1234QP\"\n    },\n    \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_at\": \"2025-06-14T06:01:43.294Z\",\n    \"updated_at\": \"2025-06-14T06:01:43.294Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "404 Destination Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-mCoxDClTogH+Jn4sisxW2AsKhT8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:23:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Destination not found\"\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:48:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete destination by ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/destinations/68398becb6517978780d9348",
+							"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"destinations",
-								"68398becb6517978780d9348"
+								"684d10474ca2862908e230c9"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-f03PZP68BrRscjVfzzchDOIgK/k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:27:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Destination deleted succesfully\"\n}"
+						},
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c9"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-mCoxDClTogH+Jn4sisxW2AsKhT8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:28:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Destination not found\"\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c9"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:48:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Update destination by ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n  \"url\": \"http://postman.api\",\r\n  \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"1123\"\r\n  }\r\n}",
+							"raw": "{\r\n//   \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n//   \"url\": \"http://postman.api\",\r\n//   \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"12\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,17 +2027,461 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/destinations/68399681aad8f140a2bed566",
+							"raw": "{{url}}/destinations/684d10474ca2862908e230c7",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"destinations",
-								"68399681aad8f140a2bed566"
+								"684d10474ca2862908e230c7"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n//   \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n//   \"url\": \"http://postman.api\",\r\n//   \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"12\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "335"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14f-Xo3DjcFknrMzgjECdGMyDmlZcv8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:26:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"684d10474ca2862908e230c9\",\n    \"account_id\": \"AMAZONACCID7\",\n    \"url\": \"http://localhost:3000/ping\",\n    \"http_method\": \"GET\",\n    \"headers\": {\n        \"APP_ID\": \"12\"\n    },\n    \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n    \"created_at\": \"2025-06-14T06:01:43.294Z\",\n    \"updated_at\": \"2025-06-14T06:26:53.399Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "404 Not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n//   \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n//   \"url\": \"http://postman.api\",\r\n//   \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"12\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c7"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-mCoxDClTogH+Jn4sisxW2AsKhT8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:27:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Destination not found\"\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n//   \"accountId\": \"2583f0bf-1119-4816-bca1-6cd40f6d3136\",\r\n//   \"url\": \"http://postman.api\",\r\n//   \"http_method\": \"POST\",\r\n  \"headers\": {\r\n    \"APP_ID\": \"12\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations/684d10474ca2862908e230c7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"684d10474ca2862908e230c7"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:49:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Filter call",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10,\r\n    \"http_method\": \"GET\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/destinations/utils/list/filter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"utils",
+								"list",
+								"filter"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10,\r\n    \"http_method\": \"GET\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations/utils/list/filter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"utils",
+										"list",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "405"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"195-vlqGU6hGExo5L37Yg3HDF1KPX+g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:32:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"684d16abbbd4d50edf0eed72\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"url\": \"http://localhost:3000/ping\",\n            \"http_method\": \"GET\",\n            \"headers\": {\n                \"APP_ID\": \"1234QP\"\n            },\n            \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n            \"created_at\": \"2025-06-14T06:28:59.936Z\",\n            \"updated_at\": \"2025-06-14T06:28:59.936Z\",\n            \"__v\": 0,\n            \"account_name\": \"Amazon\"\n        }\n    ],\n    \"total_count\": 1\n}"
+						},
+						{
+							"name": "401 Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10,\r\n    \"http_method\": \"GET\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/destinations/utils/list/filter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"utils",
+										"list",
+										"filter"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:49:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get destination by account_id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_id\": \"ACCID007\",\r\n    \"url\": \"http://postman.api\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/destinations/account/AMAZONACCID7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"destinations",
+								"account",
+								"AMAZONACCID7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_id\": \"ACCID007\",\r\n    \"url\": \"http://postman.api\",\r\n    \"http_method\": \"get\",\r\n    \"headers\": {\r\n        \"APP_ID\": \"1234QP\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/destinations/account/AMAZONACCID7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"destinations",
+										"account",
+										"AMAZONACCID7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "341"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"155-nivl/ZRXgv+S3Odbr4TeSwb3fA4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 07:07:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"684d16abbbd4d50edf0eed72\",\n        \"account_id\": \"AMAZONACCID7\",\n        \"url\": \"http://localhost:3000/ping\",\n        \"http_method\": \"GET\",\n        \"headers\": {\n            \"APP_ID\": \"1234QP\"\n        },\n        \"updated_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n        \"created_by\": \"fa43a297-9674-4f9d-975c-6cab80b0790b\",\n        \"created_at\": \"2025-06-14T06:28:59.936Z\",\n        \"updated_at\": \"2025-06-14T06:28:59.936Z\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -271,11 +2491,21 @@
 				{
 					"name": "Get incoming data",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "CL-X-TOKEN",
-								"value": "7b4ed00f-aafc-4c61-8627-12463fb56efe",
+								"value": "e3f1bcb1-f464-4a16-8013-7ea0757e1505",
 								"type": "text"
 							}
 						],
@@ -299,7 +2529,837 @@
 							]
 						}
 					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "CL-X-TOKEN",
+										"value": "e3f1bcb1-f464-4a16-8013-7ea0757e1505",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event\": \"user.signup\",\r\n    \"user\": {\r\n        \"id\": \"u001\",\r\n        \"email\": \"newuser@example.com\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/server/incoming_data",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"server",
+										"incoming_data"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:05:54 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1749881156"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-1NyKd4NnACayyjZx7dV5I+NtK8Y\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Data forwarded to destinations\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Account Member",
+			"item": [
+				{
+					"name": "Create Account Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"account_id\":\"ACCID007\",\r\n    \"user_id\":\"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\r\n    \"role_id\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/member",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"member"
+							]
+						}
+					},
 					"response": []
+				},
+				{
+					"name": "Get account member by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_id\":\"ACCID007\",\r\n    \"user_id\":\"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\r\n    \"role_id\":\"ADMIN\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/account/member/684c07f9601241300ecd4207",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"member",
+								"684c07f9601241300ecd4207"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account member by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/account/member/684c07f9601241300ecd4201",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"member",
+								"684c07f9601241300ecd4201"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update account member by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_id\":\"ACCID007\",\r\n    \"user_id\":\"ea8f591b-7121-4189-b1f4-421a1a763c8d\",\r\n    \"role_id\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/member/684c07f9601241300ecd4207",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"member",
+								"684c07f9601241300ecd4207"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account member list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/account/member/utils/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"member",
+								"utils",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles (For Internal Use)",
+			"item": [
+				{
+					"name": "Create Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{url}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"user\",\r\n    \"role_id\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"role"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"password\":\"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/admin/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat678@gmail.com\",\r\n    \"password\":\"Test@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/auth/admin/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-jVIfi7nDSUA2T/R7AyO5ThLTrsQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:58:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Registration successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat6@gmail.com\",\r\n    \"password\":\"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/public/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"public",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat6@gmail.com\",\r\n    \"password\":\"Test@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/auth/public/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth",
+										"public",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "337"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"151-Ygw7We3ri7nJStMI67pcRBpj7Ts\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 05:58:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successfully\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODRkMGY2NzRjYTI4NjI5MDhlMjMwYWYiLCJlbWFpbCI6Imdva3VsdmVua2F0Njc4QGdtYWlsLmNvbSIsInN1YiI6ImZhNDNhMjk3LTk2NzQtNGY5ZC05NzVjLTZjYWI4MGIwNzkwYiIsImlhdCI6MTc0OTg4MDczMCwiZXhwIjoxNzQ5OTY3MTMwfQ.VdXbyX42Ri13jjzdoCD0c6E-uccB3rG1MLFiDFAMvws\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Invite User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"gokulvenkat6@gmail.com\",\r\n    \"password\":\"Test@123\",\r\n    \"account_id\":\"AMAZONACCID7\",\r\n    \"role_id\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/invite/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"invite",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"gokulvenkat6@gmail.com\",\r\n    \"password\":\"Test@123\",\r\n    \"account_id\":\"AMAZONACCID7\",\r\n    \"role_id\":\"ADMIN\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/auth/invite/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth",
+										"invite",
+										"user"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-Bkq2beQ+/C2fBmtI2RAHTmEAv8M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:35:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User invited successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/public/logout/{{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"public",
+								"logout",
+								"{{token}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Logout Succesfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/auth/public/logout/{{token}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth",
+										"public",
+										"logout",
+										"{{token}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-VG49i2dWAP0u1muVwi3zHHLz1Y8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:36:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logout successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Logger",
+			"item": [
+				{
+					"name": "Logger filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10\r\n    // \"status\": \"FAILED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/logger/utils/list/filter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logger",
+								"utils",
+								"list",
+								"filter"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401 Not a valid token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10\r\n    // \"status\": \"FAILED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/logger/utils/list/filter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logger",
+										"utils",
+										"list",
+										"filter"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-ixgPztP1JRLZFSf9JBBKRYVmHxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:36:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not a valid token\"\n}"
+						},
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skip\": 0,\r\n    \"limit\": 10\r\n    // \"status\": \"FAILED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/logger/utils/list/filter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logger",
+										"utils",
+										"list",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "588"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24c-eWL29GxPBLZwlrCYY+I8zJvjwLI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Jun 2025 06:41:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"684d11504ca2862908e230d0\",\n            \"account_id\": \"AMAZONACCID7\",\n            \"received_timestamp\": \"2025-06-14T06:05:58.718Z\",\n            \"processed_timestamp\": \"2025-06-14T06:06:07.947Z\",\n            \"destination_id\": \"684d10474ca2862908e230c9\",\n            \"received_data\": {\n                \"event\": \"user.signup\",\n                \"user\": {\n                    \"id\": \"u001\",\n                    \"email\": \"newuser@example.com\"\n                }\n            },\n            \"status\": \"SUCCESS\",\n            \"event_id\": \"6e981da8-7174-4b2a-9491-f8c4a2b0fe02\",\n            \"created_at\": \"2025-06-14T06:06:08.058Z\",\n            \"updated_at\": \"2025-06-14T06:06:08.058Z\",\n            \"__v\": 0,\n            \"destinationObjectId\": \"684d10474ca2862908e230c9\",\n            \"destination_info\": [],\n            \"account_name\": \"Amazon\"\n        }\n    ],\n    \"total_count\": 1\n}"
+						}
+					]
 				}
 			]
 		},
